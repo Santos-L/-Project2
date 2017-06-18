@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project2</string>
+    <string name="app_name">Tic-Tac-Toe</string>
     <string name="player1">X</string>
     <string name="player2">O</string>
     <string name="newGame">New Game</string>

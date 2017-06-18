@@ -215,6 +215,53 @@ public class MainActivity extends AppCompatActivity {
         //endregion
     }// end checkIfGameIsOver
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        //save game button text
+        for (int i = 0; i < BOARD_SIZE; i++){
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                StringBuilder builder = new StringBuilder(8);
+                builder.append("button").append(i).append(j);
+                String thisButton = builder.toString();
+
+                outState.putString(thisButton,gameBoard[i][j].getText().toString());
+            }
+        }
+
+        //save Textview
+        outState.putString("updateText", gameUpdateView.getText().toString());
+
+        //save currentPlayer
+        outState.putString("cp", getCurrentPlayer());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //get game button text
+        for (int i = 0; i < BOARD_SIZE; i++){
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                StringBuilder builder = new StringBuilder(8);
+                builder.append("button").append(i).append(j);
+                String thisButton = builder.toString();
+
+                gameBoard[i][j].setText(savedInstanceState.getString(thisButton));
+                if(gameBoard[i][j].getText().toString() != EMPTY){
+                    gameBoard[i][j].setClickable(false);
+                }
+            }
+        }
+
+        //get Textview
+        gameUpdateView.setText(savedInstanceState.getString("updateText"));
+
+        //get currentPlayer
+        setCurrentPlayer(savedInstanceState.getString("cp"));
+    }
+
     private class gameBoardListener implements View.OnClickListener {
         int row;
         int col;
