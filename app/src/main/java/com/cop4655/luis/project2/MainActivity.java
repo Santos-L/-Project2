@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String PLAYER_2 = "0";
     public static final String EMPTY = "";
     private boolean gameOver = false;
-    private boolean playerOneTurn = true;
+    private boolean boardFull = false;
     String currentPlayer;
     private int top = 0;
     private int center = 1;
@@ -89,26 +89,36 @@ public class MainActivity extends AppCompatActivity {
         });
         //endregion
 
+        //region game start conditions
         currentPlayer = PLAYER_1;
         gameUpdateView.setText("Player " + PLAYER_1 + "'s Turn");
-
-        //region game loop
-        /*while (!gameOver){
-            gameUpdateView.setText("Player " + getCurrentPlayer() + "'s Turn");
-
-        }*/
         //endregion
     }// end onCreate
 
     private void newGame(){
+        //reset game board
         for (int i = 0; i < BOARD_SIZE; i++){
             for (int j = 0; j < BOARD_SIZE; j++) {
                 gameBoard[i][j].setText(EMPTY);
                 gameBoard[i][j].setClickable(true);
-                gameOver = false;
             }
         }
+        gameOver = false;
+
+        //reset player
+        setCurrentPlayer(PLAYER_1);
+        gameUpdateView.setText("Player " + getCurrentPlayer() + "'s Turn");
     }// end newGame
+
+    private void lockBoard(){
+        //lock game board when it is over
+        for (int i = 0; i < BOARD_SIZE; i++){
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                gameBoard[i][j].setClickable(false);
+            }
+        }
+        gameOver = true;
+    }// end lockBoard
 
     private void setCurrentPlayer(String cp){
         this.currentPlayer = cp;
@@ -119,17 +129,91 @@ public class MainActivity extends AppCompatActivity {
     }// end getCurrentPlayer
 
     private void recordMove(){
-        playerOneTurn = !playerOneTurn;
+        checkIfGameIsOver();
 
-        if(getCurrentPlayer() == PLAYER_1){
-            setCurrentPlayer(PLAYER_2);
+        if(gameOver){
+            gameUpdateView.setText(getCurrentPlayer() + " wins!");
+        } else if(boardFull) {
+            gameUpdateView.setText("Board full, tie game!!");
         } else {
-            setCurrentPlayer(PLAYER_1);
-        }
+            if (getCurrentPlayer() == PLAYER_1) {
+                setCurrentPlayer(PLAYER_2);
+            } else {
+                setCurrentPlayer(PLAYER_1);
+            }// end if
 
-        gameUpdateView.setText("Player " + getCurrentPlayer() + "'s Turn");
+            gameUpdateView.setText("Player " + getCurrentPlayer() + "'s Turn");
+        }// end if
 
     }// end recordMove
+
+    private void checkIfGameIsOver(){
+        //region check rows
+        if(gameBoard[top][left].getText() == gameBoard[top][mid].getText()  && gameBoard[top][mid].getText()  == gameBoard[top][right].getText() ){
+            if (gameBoard[top][left].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+
+        if(gameBoard[center][left].getText() == gameBoard[center][mid].getText()  && gameBoard[center][mid].getText()  == gameBoard[center][right].getText() ){
+            if (gameBoard[center][left].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+
+        if(gameBoard[bot][left].getText() == gameBoard[bot][mid].getText()  && gameBoard[bot][mid].getText()  == gameBoard[bot][right].getText() ){
+            if (gameBoard[bot][left].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+        //endregion
+        
+        //region check columns
+        if(gameBoard[top][left].getText() == gameBoard[center][left].getText()  && gameBoard[center][left].getText()  == gameBoard[bot][left].getText() ){
+            if (gameBoard[top][left].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+
+        if(gameBoard[top][mid].getText() == gameBoard[center][mid].getText()  && gameBoard[center][mid].getText()  == gameBoard[bot][mid].getText() ){
+            if (gameBoard[top][mid].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+
+        if(gameBoard[top][right].getText() == gameBoard[center][right].getText()  && gameBoard[center][right].getText()  == gameBoard[bot][right].getText() ){
+            if (gameBoard[top][right].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+        //endregion
+
+        //region check diagnals
+        if(gameBoard[top][left].getText() == gameBoard[center][mid].getText()  && gameBoard[center][mid].getText()  == gameBoard[bot][right].getText() ){
+            if (gameBoard[top][left].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+
+        if(gameBoard[top][right].getText() == gameBoard[center][mid].getText()  && gameBoard[center][mid].getText()  == gameBoard[bot][left].getText() ){
+            if (gameBoard[top][right].getText() != EMPTY) {
+                lockBoard();
+            }
+        }
+        //endregion
+
+        //region check if board is full
+        boardFull = true;
+        for (int i = 0; i < BOARD_SIZE; i++){
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                if (gameBoard[i][j].getText() == EMPTY){
+                    boardFull = false;
+                    break;
+                }
+            }
+        }
+        //endregion
+    }// end checkIfGameIsOver
 
     private class gameBoardListener implements View.OnClickListener {
         int row;
