@@ -235,6 +235,9 @@ public class MainActivity extends AppCompatActivity {
 
         //save currentPlayer
         outState.putString("cp", getCurrentPlayer());
+
+        //save game status
+        outState.putBoolean("over", gameOver);
     }
 
     @Override
@@ -260,6 +263,11 @@ public class MainActivity extends AppCompatActivity {
 
         //get currentPlayer
         setCurrentPlayer(savedInstanceState.getString("cp"));
+
+        //get game status
+        if (savedInstanceState.getBoolean("over")){
+            lockBoard();
+        }
     }
 
     private class gameBoardListener implements View.OnClickListener {
