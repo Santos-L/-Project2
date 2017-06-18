@@ -16,7 +16,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    //game variables
+    //region game variables
     private Button gameBoard[][];
     private static final int BOARD_SIZE = 3;
     public static final String PLAYER_1 = "X";
@@ -24,14 +24,16 @@ public class MainActivity extends AppCompatActivity {
     public static final String EMPTY = "";
     private boolean gameOver = false;
     private boolean playerOneTurn = true;
+    String currentPlayer;
     private int top = 0;
     private int center = 1;
     private int bot = 2;
     private int left = 0;
     private int mid = 1;
     private int right = 2;
+    //endregion
 
-    //phone object variables
+    //region phone object variables
     private Button topLeft;
     private Button topMid;
     private Button topRight;
@@ -43,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
     private Button botRight;
     private TextView gameUpdateView;
     private Button newGameButton;
-
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -74,16 +77,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < BOARD_SIZE; i++){
             for (int j = 0; j < BOARD_SIZE; j++){
                 gameBoard[i][j].setText(EMPTY);
-                gameBoard[i][j].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Button btn = (Button)v;
-                        if(btn.getText().equals(EMPTY) ){
-                            btn.setText(PLAYER_2);
-                            btn.setClickable(false);
-                        }
-                    }
-                });
+                gameBoard[i][j].setOnClickListener(new gameBoardListener(i, j));
             }// end for j
         }// end for i
 
@@ -94,7 +88,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //endregion
-        
+
+        currentPlayer = PLAYER_1;
+        gameUpdateView.setText("Player " + PLAYER_1 + "'s Turn");
+
+        //region game loop
+        /*while (!gameOver){
+            gameUpdateView.setText("Player " + getCurrentPlayer() + "'s Turn");
+
+        }*/
+        //endregion
     }// end onCreate
 
     private void newGame(){
@@ -107,4 +110,42 @@ public class MainActivity extends AppCompatActivity {
         }
     }// end newGame
 
+    private void setCurrentPlayer(String cp){
+        this.currentPlayer = cp;
+    }//end setCurrentPlayer
+
+    private String getCurrentPlayer(){
+        return this.currentPlayer;
+    }// end getCurrentPlayer
+
+    private void recordMove(){
+        playerOneTurn = !playerOneTurn;
+
+        if(getCurrentPlayer() == PLAYER_1){
+            setCurrentPlayer(PLAYER_2);
+        } else {
+            setCurrentPlayer(PLAYER_1);
+        }
+
+        gameUpdateView.setText("Player " + getCurrentPlayer() + "'s Turn");
+
+    }// end recordMove
+
+    private class gameBoardListener implements View.OnClickListener {
+        int row;
+        int col;
+
+        public gameBoardListener(int row, int col){
+            this.row = row;
+            this.col = col;
+        }// end constructor
+
+        @Override
+        public void onClick(View v){
+            gameBoard[row][col].setText(getCurrentPlayer());
+            gameBoard[row][col].setClickable(false);
+            recordMove();
+        }// end onClick
+
+    }// end class gameBoardListener
 }// end MainActivity
