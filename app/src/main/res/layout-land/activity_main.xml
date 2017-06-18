@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/verticalLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.cop4655.luis.project2.MainActivity">
+    <!--
+    Luis Santos
+    COP 4655
+    Project 2
+    Tic-Tac-Toe
+ -->
+
+    <LinearLayout
+        android:id="@+id/updateArea"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playArea"
+        app:layout_constraintVertical_bias="0.117">
+
+        <TextView
+            android:id="@+id/gameUpdateView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Game Updates"
+            android:textAlignment="center"
+            android:textSize="@dimen/updatetextSize" />
+
+        <Button
+            android:id="@+id/newGameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/newGame"
+            android:textSize="@dimen/updatetextSize"
+            tools:text="@string/newGame" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/playArea"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:weightSum="3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/topLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:height="@dimen/buttonDim"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+
+            <Button
+                android:id="@+id/topMid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+
+            <Button
+                android:id="@+id/topRight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/centerLeft"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+
+            <Button
+                android:id="@+id/centerMid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+
+            <Button
+                android:id="@+id/centerRight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/botLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+
+            <Button
+                android:id="@+id/botMid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+
+            <Button
+                android:id="@+id/botRight"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/player1"
+                android:textSize="@dimen/textSize"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
+        </TableRow>
+
+    </TableLayout>
+
+</android.support.constraint.ConstraintLayout>
