@@ -73,30 +73,33 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:height="@dimen/buttonDim"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
 
             <Button
                 android:id="@+id/topMid"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/O"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
 
             <Button
                 android:id="@+id/topRight"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
         </TableRow>
 
         <TableRow
@@ -109,30 +112,33 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
 
             <Button
                 android:id="@+id/centerMid"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
 
             <Button
                 android:id="@+id/centerRight"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
         </TableRow>
 
         <TableRow
@@ -145,30 +151,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
 
             <Button
                 android:id="@+id/botMid"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
 
             <Button
                 android:id="@+id/botRight"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/X"
+                android:text="@string/player1"
                 android:textSize="@dimen/textSize"
                 tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:layout_editor_absoluteY="20dp"
+                tools:text=" " />
         </TableRow>
 
     </TableLayout>
