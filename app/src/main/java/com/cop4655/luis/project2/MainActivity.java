@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //endregion
 
-        //region check diagnols
+        //region check diagnals
         if(gameBoard[top][left].getText() == gameBoard[center][mid].getText()  && gameBoard[center][mid].getText()  == gameBoard[bot][right].getText() ){
             if (gameBoard[top][left].getText() != EMPTY) {
                 lockBoard();
